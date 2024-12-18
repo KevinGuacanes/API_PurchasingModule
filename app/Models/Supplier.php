@@ -1,5 +1,7 @@
 <?php
 
+// app/Models/Supplier.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,19 +11,21 @@ class Supplier extends Model
 {
     use HasFactory;
 
+    // Indica que la clave primaria no es auto-incremental
+    public $incrementing = false;
+
+    // Especifica que el tipo de la clave primaria es string
+    protected $keyType = 'string';
+
     protected $fillable = ['id', 'name', 'city_id', 'supplier_type', 'address', 'phone', 'email', 'status'];
 
-    // Supplier.php
     public function city()
     {
         return $this->belongsTo(City::class);
     }
 
-
-    // Modelo Supplier.php
-public function purchaseInvoices()
-{
-    return $this->hasMany(PurchaseInvoice::class, 'supplier_id');
-}
-
+    public function purchaseInvoices()
+    {
+        return $this->hasMany(PurchaseInvoice::class, 'supplier_id');
+    }
 }

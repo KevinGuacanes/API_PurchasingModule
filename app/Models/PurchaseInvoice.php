@@ -1,4 +1,6 @@
 <?php
+// app/Models/PurchaseInvoice.php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -7,6 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class PurchaseInvoice extends Model
 {
     use HasFactory;
+
+    // Indica que la clave primaria no es auto-incremental
+    public $incrementing = false;
+
+    // Especifica que el tipo de la clave primaria es string
+    protected $keyType = 'string';
 
     protected $fillable = [
         'id',
@@ -28,4 +36,3 @@ class PurchaseInvoice extends Model
         return $this->hasMany(InvoiceDetail::class, 'invoice_id', 'id');
     }
 }
-

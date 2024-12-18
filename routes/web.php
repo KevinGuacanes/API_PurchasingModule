@@ -1,21 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Hola'); // Renderiza la página Hola.jsx
 });
 
 
-use Inertia\Inertia;
+
 
 Route::get('/hola', function () {
     return Inertia::render('Hola'); // Renderiza la página Hola.jsx
 });
 
-use App\Http\Controllers\SupplierController;
-
-Route::middleware(['web'])->group(function () {
-    Route::get('suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
-});
